@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_manager_oop/airport_objects/implementations/airport.dart';
 import 'package:flutter_manager_oop/airport_objects/implementations/runway.dart';
-import 'package:flutter_manager_oop/airport_objects/implementations/small_ramp.dart';
+import 'package:flutter_manager_oop/airport_objects/implementations/ramps/small_ramp.dart';
 import 'package:flutter_manager_oop/airport_objects/interfaces/base_airport.dart';
 import 'package:flutter_manager_oop/airport_objects/interfaces/base_ramp.dart';
 import 'package:flutter_manager_oop/airport_objects/interfaces/base_runway.dart';
@@ -26,7 +26,12 @@ class MyApp extends StatelessWidget {
             ),
             LocalAirport(
               name: 'Local Airport 02',
-              ramps: <BaseRamp>[SmallRamp()],
+              ramps: <BaseRamp>[
+                SmallRamp(),
+                SmallRamp(),
+                SmallRamp(),
+                SmallRamp(),
+              ],
               runways: <BaseRunway>[Runway(tag: 'Line A')],
             ),
             LocalAirport(

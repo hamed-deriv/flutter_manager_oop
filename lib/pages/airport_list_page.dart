@@ -15,10 +15,9 @@ class AirportListPage extends StatelessWidget {
         appBar: AppBar(
           elevation: 0,
           centerTitle: true,
-          title: Text('Airports', style: titleTextStyle),
+          title: Text('Airports', style: pageTitleTextStyle),
         ),
         body: ListView.builder(
-          shrinkWrap: true,
           itemCount: airports.length,
           itemBuilder: (BuildContext context, int index) =>
               AirportItem(airport: airports[index]),
