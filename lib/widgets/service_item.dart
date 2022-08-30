@@ -47,7 +47,13 @@ class _ServiceItemState extends State<ServiceItem> {
               ? null
               : () => Timer.periodic(
                     const Duration(seconds: 1),
-                    (_) => setState(() => currentValue++),
+                    (Timer timer) {
+                      setState(() => currentValue++);
+
+                      if (currentValue == widget.service.duration) {
+                        timer.cancel();
+                      }
+                    },
                   ),
         ),
       );
