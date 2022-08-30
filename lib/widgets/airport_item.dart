@@ -13,10 +13,10 @@ class AirportItem extends StatelessWidget {
   Widget build(BuildContext context) => Card(
         child: ListTile(
           leading: Image.asset('assets/ic_airport.png', width: 32, height: 32),
-          title: Text(airport.name, style: normalTextStyle),
+          title: Text(airport.name, style: normalTextBoldStyle),
           subtitle: Text(
             'Ramps: ${airport.ramps.length}, Runways: ${airport.runways.length}',
-            style: smallTextStyle,
+            style: smallTextBoldStyle,
           ),
           trailing: const Icon(Icons.navigate_next),
           onTap: () => Navigator.of(context).push(

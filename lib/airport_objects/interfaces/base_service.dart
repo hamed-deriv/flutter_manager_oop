@@ -3,4 +3,6 @@ abstract class BaseService {
 
   final String name;
   final int duration;
+
+  String get getAsset => 'assets/ic_${name.split(' ').first.toLowerCase()}.png';
 }
