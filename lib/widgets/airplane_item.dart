@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_manager_oop/airport_objects/interfaces/airplanes/base_airplane.dart';
+import 'package:flutter_manager_oop/widgets/custom_text.dart';
 import 'package:flutter_manager_oop/widgets/service_item.dart';
 
 class AirplaneItem extends StatefulWidget {
@@ -25,12 +26,20 @@ class _AirplaneItemState extends State<AirplaneItem> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text('Name: ${widget.airplane.size.name}'),
+                CustomText(
+                  title: 'Size',
+                  content: '${widget.airplane.size.name}',
+                ),
                 const SizedBox(height: 8),
-                Text('Model: ${widget.airplane.model}'),
+                CustomText(
+                  title: 'Model',
+                  content: '${widget.airplane.model}',
+                ),
                 const SizedBox(height: 8),
-                Text(
-                  'Services: $finishedServices/${widget.airplane.requiredServices.length}',
+                CustomText(
+                  title: 'Services',
+                  content:
+                      '$finishedServices/${widget.airplane.requiredServices.length}',
                 ),
                 const SizedBox(height: 8),
                 Expanded(

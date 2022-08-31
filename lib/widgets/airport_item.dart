@@ -16,7 +16,7 @@ class AirportItem extends StatelessWidget {
           title: Text(airport.name, style: normalTextBoldStyle),
           subtitle: Text(
             'Ramps: ${airport.ramps.length}, Runways: ${airport.runways.length}',
-            style: smallTextBoldStyle,
+            style: smallTextStyle,
           ),
           trailing: const Icon(Icons.navigate_next),
           onTap: () => Navigator.of(context).push(

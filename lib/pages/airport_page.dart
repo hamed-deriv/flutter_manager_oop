@@ -5,6 +5,7 @@ import 'package:flutter_manager_oop/airport_objects/interfaces/airplanes/base_ai
 import 'package:flutter_manager_oop/airport_objects/interfaces/base_airport.dart';
 import 'package:flutter_manager_oop/styles.dart';
 import 'package:flutter_manager_oop/widgets/airplane_item.dart';
+import 'package:flutter_manager_oop/widgets/custom_text.dart';
 
 class AirportPage extends StatelessWidget {
   const AirportPage({required this.airport, Key? key}) : super(key: key);
@@ -62,14 +63,14 @@ class AirportPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      'Size: ${airport.ramps[index].size.name}',
-                      style: smallTextStyle,
+                    CustomText(
+                      title: 'Size',
+                      content: '${airport.ramps[index].size.name}',
                     ),
-                    Text(
-                      'Airplane: ${airport.ramps[index].airplane ?? 'empty'}',
-                      style: smallTextStyle,
-                    )
+                    CustomText(
+                      title: 'Airplane',
+                      content: '${airport.ramps[index].airplane ?? '-'}',
+                    ),
                   ],
                 ),
               ],
@@ -79,7 +80,7 @@ class AirportPage extends StatelessWidget {
       );
 
   Widget _buildAirplanes(List<BaseAirplane> airplanes) => SizedBox(
-        height: 128,
+        height: 150,
         child: ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
