@@ -61,10 +61,10 @@ class _ServiceItemState extends State<ServiceItem> {
         onTap: currentValue > 0
             ? null
             : () => Timer.periodic(
-                  const Duration(milliseconds: 100),
+                  const Duration(milliseconds: 40),
                   (Timer timer) {
                     if (mounted) {
-                      currentValue += 0.1;
+                      currentValue += 0.04;
                       remainValue = widget.service.duration - currentValue;
 
                       setState(() {});
