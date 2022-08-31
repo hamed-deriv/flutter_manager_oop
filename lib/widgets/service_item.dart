@@ -17,7 +17,15 @@ class ServiceItem extends StatefulWidget {
 }
 
 class _ServiceItemState extends State<ServiceItem> {
-  int currentValue = 0;
+  double currentValue = 0;
+  double remainValue = -1;
+
+  @override
+  void initState() {
+    super.initState();
+
+    remainValue = widget.service.duration - currentValue;
+  }
 
   @override
   Widget build(BuildContext context) => InkWell(
@@ -33,9 +41,7 @@ class _ServiceItemState extends State<ServiceItem> {
                       widget.service.getAsset,
                       width: 16,
                       height: 16,
-                      color: currentValue == widget.service.duration
-                          ? Colors.green
-                          : Colors.orange,
+                      color: _isServiceDone() ? Colors.green : Colors.orange,
                     ),
                   ),
                 ),
@@ -47,7 +53,7 @@ class _ServiceItemState extends State<ServiceItem> {
             ),
             const SizedBox(height: 6),
             Text(
-              '${widget.service.duration - currentValue}',
+              '${remainValue <= 0 ? 'Done' : remainValue.toStringAsFixed(2)}',
               style: smallTextBoldStyle,
             )
           ],
@@ -55,11 +61,16 @@ class _ServiceItemState extends State<ServiceItem> {
         onTap: currentValue > 0
             ? null
             : () => Timer.periodic(
-                  const Duration(seconds: 1),
+                  const Duration(milliseconds: 100),
                   (Timer timer) {
-                    setState(() => currentValue++);
+                    if (mounted) {
+                      currentValue += 0.1;
+                      remainValue = widget.service.duration - currentValue;
 
-                    if (currentValue == widget.service.duration) {
+                      setState(() {});
+                    }
+
+                    if (_isServiceDone()) {
                       widget.onFinished?.call();
 
                       timer.cancel();
@@ -67,4 +78,6 @@ class _ServiceItemState extends State<ServiceItem> {
                   },
                 ),
       );
+
+  bool _isServiceDone() => currentValue >= widget.service.duration;
 }
